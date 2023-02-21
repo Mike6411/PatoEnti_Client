@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.IO;
 using System;
 
-public enum ServerConnections { LOGINS, PING, REGISTER, RACEDATA, VERSION};
+public enum ServerConnections { LOGINS, PING, REGISTER, RACEDATA, VERSION };
 
 public class Network_Manager : MonoBehaviour
 {
@@ -19,7 +19,7 @@ public class Network_Manager : MonoBehaviour
 
     //Axio ho has de cambiar a la ip de la maquina i un altre port
     //port antic 10.40.2.185
-    const string host = "localhost";
+    const string host = "10.40.1.75";
     const int port = 6543;
 
     private bool connected = false;
@@ -68,10 +68,10 @@ public class Network_Manager : MonoBehaviour
         {
             //Realizo connexion con el servidor
             socket = new TcpClient(host, port);
+            connected = true;
 
             //Pilla el stream
             stream = socket.GetStream();
-            connected = true;   
 
             //Almaceno  el canal de envio y de recepcion
             reader = new StreamReader(stream);
