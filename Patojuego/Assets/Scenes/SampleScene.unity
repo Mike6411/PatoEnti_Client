@@ -2439,8 +2439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loginButton: {fileID: 192338961}
-  loginText: {fileID: 506077375}
-  passwordText: {fileID: 900438602}
+  loginText: {fileID: 148267885}
+  passwordText: {fileID: 2145807702}
 --- !u!114 &1959964652
 MonoBehaviour:
   m_ObjectHideFlags: 0
