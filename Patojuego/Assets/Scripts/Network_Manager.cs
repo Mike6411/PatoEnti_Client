@@ -19,7 +19,7 @@ public class Network_Manager : MonoBehaviour
 
     //Axio ho has de cambiar a la ip de la maquina i un altre port
     //port antic 10.40.2.185
-    const string host = "10.40.1.75";
+    const string host = "192.168.1.43";
     const int port = 6543;
 
     private bool connected = false;
