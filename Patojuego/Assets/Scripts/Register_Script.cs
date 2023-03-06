@@ -11,11 +11,13 @@ public class Register_Script : MonoBehaviour
     [SerializeField] private InputField passwordText;
     [SerializeField] private InputField raceText;
 
+    //Setup del listener para que cuando lo cliques se ejecute Func
     private void Awake()
     {
         registerButton.onClick.AddListener(Func);
     }
 
+    //Coje los valores de la UI de registro y los pasa al register como valores mediante la funcion ConnectToServer
     private void Func()
     {
         string[] data = new string[3];

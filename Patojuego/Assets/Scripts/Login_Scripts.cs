@@ -9,11 +9,13 @@ public class Login_Scripts : MonoBehaviour
     [SerializeField] private InputField loginText;
     [SerializeField] private InputField passwordText;
 
+    //Setup del listener para que cuando lo cliques se ejecute Func
     private void Awake()
     {
         loginButton.onClick.AddListener(Func);
     }
 
+    //Coje los valores de la UI de login y los pasa al login como valores mediante la funcion ConnectToServer
     private void Func()
     {
         string[] data = new string[2];

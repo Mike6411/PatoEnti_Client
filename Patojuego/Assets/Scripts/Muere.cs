@@ -23,10 +23,13 @@ public class Muere : MonoBehaviourPun
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //le dice al jugador que ha sido dañado
         collision.gameObject.GetComponent<PlayerScript>().Damage();
+        //Anuncia al lobby que ha causado daño
         pv.RPC("NetworkDestroy", RpcTarget.All);
     }
 
+    //Despawn
     [PunRPC]
     public void NetworkDestroy()
     {

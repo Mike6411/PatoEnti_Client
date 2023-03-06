@@ -29,6 +29,7 @@ public class Network_Manager : MonoBehaviour
 
     private void Awake()
     {
+        //lo tipico
         if (_NETWORK_MANAGER != null && _NETWORK_MANAGER != this)
         {
             Destroy(this.gameObject);
@@ -55,14 +56,18 @@ public class Network_Manager : MonoBehaviour
         }
     }
 
+    //funcion para controlar lo que se recibe desde el server por el reader
     private void ManageData(string data)
     {
+        //gestion de recibida de ping
         if(data == "Ping")
         {
             Debug.Log("Recibo Ping");
             writer.WriteLine("1");
             writer.Flush();
         }
+
+        //Si la respuesta es la que te da el login despues de hacer su funcion exitosamente pasamos a matchmaking
         else if (data == "1" || data == "2")
         {
             Debug.Log("Succesful Login");
@@ -70,6 +75,7 @@ public class Network_Manager : MonoBehaviour
         }
     }
 
+    //Gestion de los diferentes mensajes que le enviamos al server mediante un enum que contiene todos los casos diferentes y los parametros que necesita despues si los necesita
     public void ConnectToServer(ServerConnections conn, string[] parameters)
     {
         try

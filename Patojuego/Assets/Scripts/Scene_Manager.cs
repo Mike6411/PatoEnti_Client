@@ -21,11 +21,13 @@ public class Scene_Manager : MonoBehaviour
         }
     }
 
+    //Self explainatory
     public void LoadLoginRegisterScene()
     {
         SceneManager.LoadScene("loginregister_screen", LoadSceneMode.Additive);
     }
 
+    //Self explainatory
     public void LoadMatchMakingScene()
     {
         SceneManager.LoadScene("matchmaking_screen", LoadSceneMode.Additive);
