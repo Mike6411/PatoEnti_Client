@@ -50,7 +50,7 @@ public class PlayerScript : MonoBehaviour, IPunObservable
     {
         desiredMovementAxis = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && Mathf.Approximately(rb.velocity.y, 0f))
+        if (Input.GetButtonDown("Jump"))
         {
             rb.AddForce(new Vector2(0f, jumpForce));
         }
@@ -97,6 +97,6 @@ public class PlayerScript : MonoBehaviour, IPunObservable
     [PunRPC]
     public void NetworkDamage()
     {
-        Destroy(this.gameObject);
+        Application.Quit();
     }
 }

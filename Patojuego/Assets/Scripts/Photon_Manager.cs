@@ -8,6 +8,9 @@ public class Photon_Manager : MonoBehaviourPunCallbacks
 {
     public static Photon_Manager _PHOTON_MANAGER;
 
+    //string vacia para cuando el COnnect TO server no necesita una string
+    string[] vacio = new string[1];
+
     private void Awake()
     {
         if ( _PHOTON_MANAGER != null && _PHOTON_MANAGER != this)
@@ -22,6 +25,10 @@ public class Photon_Manager : MonoBehaviourPunCallbacks
             //Realizo la connexion
             PhotonConnect();
 
+            Network_Manager._NETWORK_MANAGER.ConnectToServer(ServerConnections.DBCHECK , vacio);
+            Network_Manager._NETWORK_MANAGER.ConnectToServer(ServerConnections.RACEDATA, vacio);
+
+            Scene_Manager.sceneManager.LoadLoginRegisterScene();
         }
     }
 
@@ -32,9 +39,6 @@ public class Photon_Manager : MonoBehaviourPunCallbacks
 
         //Connexion al server con los settings establecidos (PhotonUnityNetworking => Resources)
         PhotonNetwork.ConnectUsingSettings();
-
-
-
     }
 
     public override void OnConnectedToMaster()

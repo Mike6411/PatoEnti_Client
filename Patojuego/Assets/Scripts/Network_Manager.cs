@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.IO;
 using System;
 
-public enum ServerConnections { LOGINS, PING, REGISTER, RACEDATA, VERSION };
+public enum ServerConnections { LOGINS, PING, REGISTER, RACEDATA, VERSION, DBCHECK };
 
 public class Network_Manager : MonoBehaviour
 {
@@ -16,6 +16,9 @@ public class Network_Manager : MonoBehaviour
 
     private StreamWriter writer;
     private StreamReader reader;
+
+    private string DBversion;
+    private string Racedata;
 
     //Axio ho has de cambiar a la ip de la maquina i un altre port
     //port antic 10.40.2.185
@@ -60,6 +63,11 @@ public class Network_Manager : MonoBehaviour
             writer.WriteLine("1");
             writer.Flush();
         }
+        else if (data == "1" || data == "2")
+        {
+            Debug.Log("Succesful Login");
+            Scene_Manager.sceneManager.LoadMatchMakingScene();
+        }
     }
 
     public void ConnectToServer(ServerConnections conn, string[] parameters)
@@ -90,12 +98,23 @@ public class Network_Manager : MonoBehaviour
                     writer.Flush();
                     break;
                 case ServerConnections.RACEDATA:
+                    writer.WriteLine("3");
+                    writer.Flush();
+                    //guardado de Racedata
+                    Racedata = reader.ReadLine();
+                    reader.Close();
                     break;
                 case ServerConnections.VERSION:
+                    writer.WriteLine("4");
+                    writer.Flush();
+                    break;
+                case ServerConnections.DBCHECK:
+                    writer.WriteLine("5");
+                    writer.Flush();
                     break;
             }
 
         }
-        catch { connected = false; }
+        catch { Application.Quit(); }
     }
 }

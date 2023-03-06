@@ -31,6 +31,5 @@ public class Muere : MonoBehaviourPun
     public void NetworkDestroy()
     {
         Destroy(this.gameObject);
-
     }
 }
